@@ -33,25 +33,48 @@ var arraySum = function(array) {
 // 4. Check if a number is even.
 var isEven = function(n, flag = false) {
   //cant use modulo
-  if(Number.isInteger(n / 2)){
+  if(!Number.isInteger(n / 2)){
   return flag;
   };
+
   if(Number.isInteger(n / 2)){
     flag = true;
   }
-  return isEven(n - 1, flag)
+  else {
+    return true;
+  }
+  return isEven(n - 1, flag);
   
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function(n) {
+var sumBelow = function(n, sum = 0) {
+  //return sum of integers below n not including n
+  if(n === 0 || n === 1){
+    return sum;
+  }
+  //if it's negative
+  if(n < 0){
+    console.log(n)
+    //we want the sum of the number(s) "below" n each time sumBelow is called 
+    //below means closer to zero so in order to represent that with negative numbers,
+    // add 1 to n instead
+    sum += (n + 1);
+    //recurse starting from the current number "below" n using the current sum as the second argument
+    //return to save each output as recursion takes place
+    return sumBelow(n + 1, sum)
+  }
+  sum += (n - 1);
+ return sumBelow(n - 1, sum);
+ //return sum += sumBelow(n - 1, sum);
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
+  
 };
 
 // 7. Compute the exponent of a number.
