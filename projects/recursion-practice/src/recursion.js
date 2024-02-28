@@ -74,6 +74,7 @@ var sumBelow = function(n, sum = 0) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
+
   
 };
 
@@ -98,6 +99,16 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  //if the input string reads the same reversed, return true
+  //should ignore spaces and Capital letters reg exp or replaceAll
+  let str = string.replaceAll(" ", "");
+if(str[0].toUpperCase() !== str[str.length - 1].toUpperCase()){
+  return false;
+}
+ if(str.length === 0){
+  return true;
+ }
+ return palindrome(str.slice(1, str.length - 1))
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
