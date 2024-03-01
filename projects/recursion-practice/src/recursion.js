@@ -101,15 +101,27 @@ var reverse = function(string) {
 var palindrome = function(string) {
   //if the input string reads the same reversed, return true
   //should ignore spaces and Capital letters reg exp or replaceAll
-  let str = string.replaceAll(" ", "");
-if(str[0].toUpperCase() !== str[str.length - 1].toUpperCase()){
-  return false;
-}
- if(str.length === 0){
-  return true;
- }
- return palindrome(str.slice(1, str.length - 1))
-};
+// let str = string.replace(/ /g, "")
+// if(str[0].toUpperCase() !== str[str.length - 1].toUpperCase()){
+//   return false;
+// }
+//  if(str.length === 0){
+//   return true;
+//  }
+//  return palindrome(str.slice(1, str.length - 1))
+  var str = string.replace(/ /g, '');
+  // base
+  if (str.length === 0){
+    // return true
+    return true;
+  }
+  if (str[0].toLowerCase() !== str[str.length - 1].toLowerCase()){
+    // return false
+    return false;
+  }
+  // recursion
+  return palindrome(str.slice(1, str.length - 1));
+ };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
@@ -144,6 +156,13 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  if(str1.length && str2.length === 0){
+    return true;
+  }
+  if(str1[0] !== str2[0]){
+    return false;
+  }
+  return compareStr(str1.slice(1), str2.slice(1))
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
